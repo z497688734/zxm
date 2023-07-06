@@ -25,7 +25,7 @@ if __name__ == '__main__':
         url = "http://www.jiumeifu.cc/admin.php/member/index?search_type=&keyword=&state=0&level_id=0&page="+str(pageNum)
         r = requests.post(url,headers=headers)
         try:
-            with open("file/"+str(pageNum)+".html", 'w') as f:
+            with open("file/"+str(pageNum)+".html", 'w',encoding='utf-8') as f:
                 f.write(r.text)
                 f.close()
             if pageNum > 844:
