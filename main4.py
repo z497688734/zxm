@@ -58,6 +58,7 @@ if __name__ == '__main__':
     }
     pageNum = 1
     maxPageNum = 5135
+    fileName = "abcd.csv"
     while True:
         url = "https://newtest.hangeshenzhou.com/prod-api/api/dfhMemberUser?size=100&sort=id,desc&page="+str(pageNum)
         r = requests.get(url,headers=headers)
@@ -112,7 +113,7 @@ if __name__ == '__main__':
             print("except",pageNum)
             time.sleep(1)
 
-    with open("abc.csv",mode="w",encoding="utf-8-sig",newline="") as f:
+    with open(fileName,mode="w",encoding="utf-8-sig",newline="") as f:
         writer = csv.writer(f)
         writer.writerow(headerList)
         writer.writerows(dataList)
