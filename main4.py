@@ -61,13 +61,13 @@ if __name__ == '__main__':
     pageNum = 1
     while True:
         url = "https://newtest.hangeshenzhou.com/prod-api/api/dfhMemberUser?size=100&sort=id,desc&page="+str(pageNum)
-        print(url)
         r = requests.get(url,headers=headers)
         pageNum = pageNum + 1
         try:
-            if pageNum > 3:
-                break
             respJson = r.json()
+            if pageNum > 5135:
+                break
+            print(url,len(respJson["content"]))
             if len(respJson["content"]) == 0:
                 print("###1")
                 break
@@ -79,7 +79,7 @@ if __name__ == '__main__':
                     getData(vo, "userAlias"),
                     getData(vo, "username"),
                     getData(vo, "realName"),
-                    # getData(vo, "realName"),
+                    getData(vo, "status"),
                     # getData(vo, "realName"),
                     # getData(vo, "realName"),
                     # getData(vo, "realName"),
@@ -105,7 +105,7 @@ if __name__ == '__main__':
                     # getData(vo, "realName"),
                 ]
                 dataList.append(line)
-                print(line)
+#                print(line)
         except:
             traceback.print_exc()
             print("###2")
