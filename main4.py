@@ -4,8 +4,6 @@ import time
 import traceback
 import requests
 
-# curl 'http://vdts.ivdc.org.cn:8081/cx/api/cxsj/gnsybqsms/list'     -H 'Content-Type: application/json'   -H 'Cookie: JSESSIONID=26ec412b-fd5d-4f46-8137-04b648f71df0; SL_G_WPT_TO=zh; SL_GWPT_Show_Hide_tmp=1; SL_wptGlobTipTmp=1'   -H 'Origin: http://vdts.ivdc.org.cn:8081'   -H 'Proxy-Connection: keep-alive'      -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'  --data-raw '{"page":1,"rows":25,"conditionItems":[{"field":"xgxxlx","type":"STRING","operator":"EQUAL","value":"国内兽药说明书数据"}]}'
-
 
 def getData(dict,key):
     if key in dict:
@@ -53,24 +51,23 @@ if __name__ == '__main__':
                  ]
     dataList = []
     headers = {
-        "authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91Ym9kaSIsImV4cCI6MTcyMTI3OTA4MX0.YOIgU-HAXfQRYlhjwHz84tYiZhN_Es_qyRU60E0g6haJNGGvI1ck717ePWP7utXJZ6fkHAWFUQaTb3p1o-H0bA",
+        "authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91Ym9kaSIsImV4cCI6MTcyMTMyMzM3N30.OxLOd6fYPouY16M0o9-0Y2-CGA4308LeS371UfBVv6SHVywX4RpTFjBOlPgLPxpsCe01gG4ktlOVD_HzgAYQDQ",
         "Origin":"https://sync.hangeshenzhou.com",
         "Referer":"https://sync.hangeshenzhou.com/",
         "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
     }
     pageNum = 1
+    maxPageNum = 5135
     while True:
         url = "https://newtest.hangeshenzhou.com/prod-api/api/dfhMemberUser?size=100&sort=id,desc&page="+str(pageNum)
         r = requests.get(url,headers=headers)
-        pageNum = pageNum + 1
         try:
             respJson = r.json()
-            if pageNum > 5135:
-                break
             print(url,len(respJson["content"]))
-            if len(respJson["content"]) == 0:
-                print("###1")
+            if pageNum > maxPageNum:
+                print("hit maxPageNUm")
                 break
+            pageNum = pageNum + 1
             for vo in respJson["content"]:
                 line = [
                     getData(vo,"createTime"),
@@ -80,43 +77,42 @@ if __name__ == '__main__':
                     getData(vo, "username"),
                     getData(vo, "realName"),
                     getData(vo, "status"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
-                    # getData(vo, "realName"),
+                     getData(vo, "statusDesc"),
+                    getData(vo, "branch"),
+                     getData(vo, "branchName"),
+                     getData(vo, "introducerId"),
+                     getData(vo, "introducerAlias"),
+                     getData(vo, "introducerName"),
+                     getData(vo, "parentId"),
+                     getData(vo, "parentAlias"),
+                     getData(vo, "parentName"),
+                     getData(vo, "userType"),
+                     getData(vo, "userTypeDesc"),
+                     getData(vo, "userStage"),
+                     getData(vo, "userStageDesc"),
+                     getData(vo, "addres"),
+                     getData(vo, "teamId"),
+                     getData(vo, "teamUserId"),
+                     getData(vo, "teamUserAlias"),
+                     getData(vo, "teamUserName"),
+                     getData(vo, "uniqueMobile"),
+                     getData(vo, "idCard"),
+                     getData(vo, "familyAddress"),
+                     getData(vo, "familyDetailedAddress"),
+                     getData(vo, "contactAreaAddress"),
+                     getData(vo, "password"),
+                     getData(vo, "passwordSecret"),
+                     getData(vo, "passwordBase"),
+                     getData(vo, "passwordSecretBase"),
+                     getData(vo, "cTypeDesc"),
                 ]
                 dataList.append(line)
-#                print(line)
         except:
             traceback.print_exc()
-            print("###2")
+            print("except",pageNum)
             time.sleep(1)
 
     with open("abc.csv",mode="w",encoding="utf-8-sig",newline="") as f:
         writer = csv.writer(f)
         writer.writerow(headerList)
         writer.writerows(dataList)
-
-
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
