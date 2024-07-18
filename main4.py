@@ -58,11 +58,11 @@ if __name__ == '__main__':
     }
     pageNum = 1
     maxPageNum = 5135
-    fileName = "abcd.csv"
+    fileName = "huiyuan.csv"
     while True:
-        url = "https://newtest.hangeshenzhou.com/prod-api/api/dfhMemberUser?size=100&sort=id,desc&page="+str(pageNum)
-        r = requests.get(url,headers=headers)
         try:
+            url = "https://newtest.hangeshenzhou.com/prod-api/api/dfhMemberUser?size=100&sort=id,desc&page=" + str(pageNum)
+            r = requests.get(url, headers=headers)
             respJson = r.json()
             print(url,len(respJson["content"]))
             if pageNum > maxPageNum:
