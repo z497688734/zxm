@@ -67,7 +67,6 @@ if __name__ == '__main__':
             if pageNum > maxPageNum:
                 print("hit maxPageNUm")
                 break
-            pageNum = pageNum + 1
             for vo in respJson["content"]:
                 line = [
                     getData(vo,"createTime"),
@@ -107,6 +106,7 @@ if __name__ == '__main__':
                      getData(vo, "cTypeDesc"),
                 ]
                 dataList.append(line)
+            pageNum = pageNum + 1
         except:
             traceback.print_exc()
             print("except",pageNum)
