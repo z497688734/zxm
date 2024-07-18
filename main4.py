@@ -56,14 +56,20 @@ if __name__ == '__main__':
         "Referer":"https://sync.hangeshenzhou.com/",
         "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
     }
-    pageNum = 1
+    pageNum = 3510
     maxPageNum = 5135
     fileName = "huiyuan.csv"
     while True:
         try:
             url = "https://newtest.hangeshenzhou.com/prod-api/api/dfhMemberUser?size=100&sort=id,desc&page=" + str(pageNum)
             r = requests.get(url, headers=headers)
+            if pageNum == 3515:
+                break
             respJson = r.json()
+            content = respJson.get('content')
+            if content is  None:
+                print("###content nil",respJson)
+                break
             print(url,len(respJson["content"]))
             if pageNum > maxPageNum:
                 print("hit maxPageNUm")
