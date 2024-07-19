@@ -10,6 +10,12 @@ def getData(dict,key):
         return dict[key]
     return ""
 
+def saveFile(fileName,dataList):
+    with open(fileName, mode="w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(headerList)
+        writer.writerows(dataList)
+
 if __name__ == '__main__':
 
     headerList = [
@@ -51,12 +57,12 @@ if __name__ == '__main__':
                  ]
     dataList = []
     headers = {
-        "authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91Ym9kaSIsImV4cCI6MTcyMTMyMzM3N30.OxLOd6fYPouY16M0o9-0Y2-CGA4308LeS371UfBVv6SHVywX4RpTFjBOlPgLPxpsCe01gG4ktlOVD_HzgAYQDQ",
+        "authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91Ym9kaSIsImV4cCI6MTcyMTM0MDI5NH0.H_F8f5VMKjMNpOTbQxf7t56Q98_bG_GQDf5bfvS3RVCS6IHxkrFJKUlsK0MtX2yNL2Tgj6bZ6p8yJ4nKtVRd8w",
         "Origin":"https://sync.hangeshenzhou.com",
         "Referer":"https://sync.hangeshenzhou.com/",
         "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
     }
-    pageNum = 3510
+    pageNum = 915
     maxPageNum = 5135
     fileName = "huiyuan.csv"
     while True:
@@ -118,8 +124,6 @@ if __name__ == '__main__':
             traceback.print_exc()
             print("except",pageNum)
             time.sleep(1)
+            saveFile("huiyuan.csv",dataList)
 
-    with open(fileName,mode="w",encoding="utf-8-sig",newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(headerList)
-        writer.writerows(dataList)
+    saveFile("huiyuan.csv", dataList)
