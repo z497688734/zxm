@@ -1,0 +1,72 @@
+CREATE TABLE IF NOT EXISTS `gcb3`.`sys_user`(
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `username` varchar(50) NOT NULL COMMENT '用户名',
+    `password` varchar(100) NULL COMMENT '密码',
+    `real_name` varchar(50) NULL COMMENT '姓名',
+    `avatar` varchar(200) NULL COMMENT '头像',
+    `gender` tinyint NULL COMMENT '性别',
+    `email` varchar(100) NULL COMMENT '邮箱',
+    `mobile` varchar(20) NULL COMMENT '手机号',
+    `org_id` bigint NULL COMMENT '机构ID',
+    `super_admin` tinyint NULL COMMENT '超级管理员   0：否   1：是',
+    `status` tinyint NULL COMMENT '状态  0：停用   1：正常',
+    `version` int NULL COMMENT '版本号',
+    `deleted` tinyint NULL COMMENT '删除标识',
+    `creator` bigint NULL COMMENT '创建者',
+    `create_time` datetime NULL COMMENT '创建时间',
+    `updater` bigint NULL COMMENT '更新者',
+    `update_time` datetime NULL COMMENT '更新时间',
+    `province_id` bigint NULL,
+    `province_name` varchar(255) NULL,
+    `city_id` bigint NULL,
+    `city_name` varchar(255) NULL,
+    `county_id` bigint NULL,
+    `county_name` varchar(255) NULL,
+    PRIMARY KEY  (`id` )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci  COMMENT '用户管理';
+INSERT INTO `gcb3`.`sys_user` VALUES (10000, 'admin', '{bcrypt}$2a$10$aN5SZLVTtsmgkogqGpsEruWtUDgxK9Z/4fM0E6GQfztBm6/QlJRoW', 'admin', 'https://cdn.maku.net/images/avatar.png', 0, 'babamu@126.com', '13612345678', NULL, 1, 1, 4, 0, 10000, '2023-8-3 18:41:41', 10000, '2023-8-3 18:41:41', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10001, 'CNGCBWJH', '{bcrypt}$2a$10$V0lGoO9tvaTv0gt8wN8cyuiYVyKzq4qW7EUg8/ZXnyFfswmPGDn5m', '伍江红', NULL, 0, '', '18786056772', 6, 0, 1, 2, 1, 10000, '2023-8-5 8:21:44', 10000, '2024-6-21 2:24:40', 520000, '贵州省', NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10002, '15826037594', '{bcrypt}$2a$10$yU7xCkdCrAvaqd5XZ0kuF.XH/lJ9ztxc6cWXowTJVAvZs4es5Gk0m', '彭利', NULL, 1, '', '18275004767', 14, 0, 1, 2, 1, 10000, '2023-8-21 10:9:0', 10000, '2024-6-21 2:24:42', 520000, '贵州省', 520100, '贵阳市', 520102, '南明区');
+INSERT INTO `gcb3`.`sys_user` VALUES (10003, '17785969779', '{bcrypt}$2a$10$qa0YygqMdUb8zzKkUo4r5ugRyWMI37tOAx4FEVWBvW.sErINSq8Xq', '国发贵赐宝', NULL, 0, '', '17785969779', 14, 0, 1, 1, 1, 10000, '2023-8-29 7:48:14', 10000, '2024-6-21 2:24:47', 520000, '贵州省', 520100, '贵阳市', 520102, '南明区');
+INSERT INTO `gcb3`.`sys_user` VALUES (10004, '15186722788', '{bcrypt}$2a$10$RuXpt3jmYKL7fatILq66be6ip.ZDOrHbElp2b9.QhNlmkTibeSLKe', '测试进件员', NULL, 0, '', '15186722788', 1, 0, 1, 0, 1, 10000, '2023-9-13 12:7:59', 10000, '2024-6-20 1:15:27', 520000, '贵州省', 520100, '贵阳市', 520102, '南明区');
+INSERT INTO `gcb3`.`sys_user` VALUES (10005, '13985623166', '{bcrypt}$2a$10$Gbw8TQo1Rh1zUftMv0pIwOxRSwS87.I80knevrbMYZlqI1Vrdlk6a', '刘勇', NULL, 0, '', '13985623166', 6, 0, 1, 0, 1, 10000, '2024-3-11 9:2:8', 10000, '2024-6-21 2:24:51', 520000, '贵州省', 520100, '贵阳市', 520102, '南明区');
+INSERT INTO `gcb3`.`sys_user` VALUES (10006, 'H贵州科服科技', '{bcrypt}$2a$10$dRg62o76dRl5GqK6LXQRruV2PvuaSHRpeArig68Xclau2Fy9xv9x6', '黄江源', NULL, 0, '', '13984826321', 19, 0, 1, 0, 1, 10000, '2024-3-11 9:2:8', 10000, '2024-8-4 14:51:40', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10007, 'GF202400001', '{bcrypt}$2a$10$POQ1Nog9fp.d/QB.gii.0Omi2t3eGwumrzt2yLGlF6KmZBuNdA/TK', '赵江海', NULL, 0, '', '17785969779', 6, 0, 1, 0, 0, 10000, '2024-6-21 2:48:58', 10000, '2024-6-21 2:50:16', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10008, '19238592699', '{bcrypt}$2a$10$Yvf4LX2q8ngqZ629wprhCuAuS6iaOWhWKe3Uz7IoOrHdKP5qNAxDq', '管永志', NULL, 1, '', '19238592699', 14, 0, 1, 4, 0, 10000, '2024-6-21 2:48:58', 10031, '2025-5-17 17:13:55', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10009, 'GF202400003', '{bcrypt}$2a$10$nMFJxxEuAa8ONJtBuXSA3OxXN1VqY/XuA6xcxN4.57Za2jIs1zuWi', '刘勇', NULL, 0, '', '13985623166', 6, 0, 1, 0, 0, 10000, '2024-6-21 2:48:58', 10000, '2025-5-13 7:48:59', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10010, 'GF202400004', '{bcrypt}$2a$10$iZooHK7Maw3BT0RgpTIg1eUlneZtQBRteMjxgsrfnb5VJle3mNqK2', '伍江红', NULL, 0, '', '18786056772', 13, 0, 1, 5, 0, 10000, '2024-6-21 2:48:58', 10031, '2025-4-16 17:11:43', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10011, '520102南明区', '{bcrypt}$2a$10$eTVAOOxlbnX0sTCd2jnC6.mHZmA60OYle7/LTyJ64p6a4WeDrLIs2', '吴丹', NULL, 0, '', '17308505227', 23, 0, 1, 0, 0, 10000, '2024-6-22 2:3:40', 10031, '2025-4-21 15:31:28', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10012, '520000贵州省', '{bcrypt}$2a$10$JlWiQwcT3kTI52yrGjgUX.8LSuDwhgNsAR8y/HnbwJditS8r8AbN6', '伍江红', NULL, 0, '', '13985245998', 21, 0, 1, 0, 0, 10000, '2024-6-22 2:3:40', 10000, '2024-6-27 2:16:52', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10013, '520203六枝特区', '{bcrypt}$2a$10$bPkGCSZ3ExpVpQcS6kp4surqiMnmFBKLkhVCeP92lWwNIfpovk.jy', '陈思秀', NULL, 1, '', '18685877688', 31, 0, 1, 0, 0, 10000, '2024-6-22 16:15:19', 10000, '2024-7-11 0:19:16', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10014, 'CNGCBLY', '{bcrypt}$2a$10$EKOIN1MsfOx08.VT6d1dY.cIaWnAHmLlgn9Y8SsfmGQwXqVm6BuPG', '罗羚馥玺', NULL, 0, '', '13595129346', 6, 0, 1, 0, 0, 10000, '2024-7-7 9:58:21', 10031, '2024-12-24 10:32:10', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10015, '520103云岩区', '{bcrypt}$2a$10$IyZVlNmJNt2lxeBO6/8hDOxXlOpz6yqKaFG69utkYm9SStuJqgofi', '文鑫月', NULL, 0, '', '15510313959', 24, 0, 1, 0, 0, 10000, '2024-7-10 19:56:12', 10000, '2024-7-10 19:56:12', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10016, '520521大方县', '{bcrypt}$2a$10$FJEBsPnbY4gPqdC4LyDKleEscnGuO6naNSbrGHnimVRCNCqzfzrWm', '马昭志', NULL, 0, '', '15597839783', 33, 0, 1, 0, 0, 10000, '2024-6-22 16:15:19', 10000, '2024-7-11 0:22:19', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10017, '520111花溪区', '{bcrypt}$2a$10$cHkNH3ln/1.8CvMqOv8XHe7QrLnIJgp9Qy3HHqYlXKZUGIVAwaaYu', '张华', NULL, 0, '', '17198577999', 29, 0, 1, 2, 0, 10000, '2024-6-22 16:15:19', 10000, '2024-8-4 14:49:26', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10018, '520523金沙县', '{bcrypt}$2a$10$cHKMmdKOZgMK/9jBO4K1xO88maVMQQFfrzHlRL8VOwdHfWnIKOnDK', '杨绪乾', NULL, 0, '', '18275344172', 37, 0, 1, 1, 0, 10000, '2024-6-22 16:15:19', 10000, '2024-7-11 0:31:43', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10019, '500153荣昌区', '{bcrypt}$2a$10$KSofKok3AW8JLnkSiTlAfeHgu7G2WLoQQwiL.ZhA5WOmmMJaN/g5W', '周扬', NULL, 0, '', '17760374601', 44, 0, 1, 0, 0, 10000, '2024-6-22 16:15:19', 10000, '2024-7-11 0:34:4', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10020, '520115观山湖区', '{bcrypt}$2a$10$EYqGOk5BeuCgStkT5x1E2OmIoiqJA5LP47YHtAjBQYRWr55rI88gG', '张伟', NULL, 0, '', '18985651073', 26, 0, 1, 0, 0, 10000, '2024-7-12 14:35:12', 10000, '2024-7-12 14:35:55', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10021, '522731惠水县', '{bcrypt}$2a$10$9zQrsOJluvHEdAcJOXev7uHD.6s39eqwrbWGm1kSjsvOKvHKKAoEe', '余晓波', NULL, 0, '', '18275191568', 46, 0, 1, 0, 0, 10000, '2024-7-12 14:41:29', 10000, '2024-7-12 14:41:29', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10022, '520302红花岗', '{bcrypt}$2a$10$eyqIsej2llGH0cNUhPuxjuaibrFew81wkzFWzqLBkGy6AJE8k4jsy', '全吉', NULL, 0, '', '17585815099', 35, 0, 1, 0, 0, 10000, '2024-7-12 14:43:6', 10000, '2024-7-12 14:43:6', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10023, '520626德江县', '{bcrypt}$2a$10$oD1E.znUuxjKiN.XEK/7kO55eYQ8BfNWDw62KgpoZ3dBVRJOaaR2.', '杨林', NULL, 0, '', '18275338078', 40, 0, 1, 0, 0, 10000, '2024-7-12 14:44:27', 10031, '2024-12-24 17:3:7', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10024, '520201钟山区', '{bcrypt}$2a$10$4X3rVg.SFKxms/YlgCdhAuUpTQKZ937NEpr0v0akNKnuhR/Gk30F2', '付群群', NULL, 0, '', '18748715318', 48, 0, 1, 0, 0, 10000, '2024-7-12 14:51:43', 10000, '2024-7-12 14:53:54', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10025, '520382仁怀市', '{bcrypt}$2a$10$uGpaMEPJIsCIPJ1d0/ZyC.BFuTX0THAuTuEBQQBzdNiXOWPwQDMIG', '陈国琴', NULL, 0, '', '17384831314', 41, 0, 1, 1, 0, 10000, '2024-7-12 14:52:42', 10000, '2024-8-13 12:35:39', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10026, '520113白云区', '{bcrypt}$2a$10$HSnjje4sjPlkaCJ37iDfBeLdvG7ZfSeYh8SauVE9fzc/eDuCsTr72', '黄芳', NULL, 0, '', '13639043018', 27, 0, 1, 2, 0, 10000, '2024-7-12 14:54:57', 10000, '2024-7-12 14:57:41', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10027, '520602碧江区', '{bcrypt}$2a$10$UFVUQ2G93YKwri7AC.CgKOOg4oRk/TMqAs8jm9dZ6nMj4ZVsq7o.2', '徐赵杰', NULL, 0, '', '19595650045', 39, 0, 1, 0, 0, 10000, '2024-7-12 14:54:57', 10000, '2024-10-7 15:3:51', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10028, '520112乌当区', '{bcrypt}$2a$10$UnaslXWgN4Gk4y7AgdCNS.xSxx0oeAneG9wU44ncCagjWR4FOov3i', '郑志昊', NULL, 0, '', '18985115628', 28, 0, 1, 0, 0, 10000, '2024-8-4 2:4:5', 10030, '2024-12-9 14:8:53', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10029, 'H贵州科服科技', '{bcrypt}$2a$10$f9BRkuFC0ftH8PWdo6btteOaPz4h4sXsWJ79fhBHwCvO6sI/hkEN6', '黄江源', NULL, 0, '', '13984826321', 19, 0, 1, 0, 0, 10000, '2024-8-6 12:37:16', 10000, '2024-8-6 12:41:13', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10030, 'GCBCFGL', '{bcrypt}$2a$10$Tk6SsQ8WBYOZ65CKwQfp1uptHgEkYqfyyxlKsYE0vLzo//AEegyOy', '赵珍珍', NULL, 1, '18385110259@163.com', '18385110259', 16, 0, 1, 1, 0, 10000, '2024-9-18 15:14:47', 10000, '2025-4-25 15:41:20', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10031, 'CNGCBYW', '{bcrypt}$2a$10$cMuiT.5D/ggMAIxm3hyVVe06rEkcEVHdZbECnF/kfQHaLgu6tFppq', '运维工程师', NULL, 0, NULL, '19288312785', 6, 0, 1, 1, 0, 10000, '2024-9-23 11:30:21', 10000, '2024-10-23 11:40:25', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10032, '520603万山区', '{bcrypt}$2a$10$mqUrPFv8/0eBQkXcQcHTWuR8hqyvmTiepjYJ4XxCemU2fk236og96', '杨胜银', NULL, 0, '18886333372@163.com', '18886333372', 52, 0, 1, 0, 0, 10000, '2024-7-12 14:54:57', 10000, '2024-10-21 9:29:35', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10033, '410000河南省', '{bcrypt}$2a$10$oT62hSW8aorTVYXaFt2UQ.fKLPUZSyiOHyp/o0HjE.5sfSeaHfvqG', '韩宗成', NULL, 0, NULL, '18272961777', 53, 0, 1, 0, 0, 10000, '2024-10-8 17:11:1', 10000, '2024-10-8 17:11:1', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10034, '520181清镇市', '{bcrypt}$2a$10$S1HJWbjDT.mqsb1dz0TKQOxE4u7srHulo5YD0sZ75xY/ERXLD0QZG', '龚飞燕', NULL, 0, NULL, '17785153113', 65, 0, 1, 1, 0, 10000, '2024-10-13 21:11:24', 10000, '2024-10-15 12:58:59', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10035, '371602滨城区', '{bcrypt}$2a$10$L8O2xU2lj6l7uDuG.YhDj.ETWmfsozHRRDDSRrAUz08S5xRrZNuF.', '孙丰良', NULL, 0, NULL, '13953310298', 71, 0, 1, 0, 0, 10030, '2024-11-8 10:18:53', 10030, '2024-11-8 10:18:53', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10036, '520304播州区', '{bcrypt}$2a$10$aino7RC4fHf6tMxD/XC2n.IWEGS0uOLztyeLp/y63qlQayQkXjIKW', '赵生行', NULL, 0, NULL, '13985249999', 36, 0, 1, 0, 0, 10000, '2024-12-3 11:38:56', 10000, '2024-12-3 11:38:56', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10037, '410200开封市', '{bcrypt}$2a$10$nqxP5Tej5PqNBMpJGQsen.FcVN7lUZP3r7IQnI.n4ZwipxCtei2Ri', '李昆鹏', NULL, 0, '18903786767@163.com', '18903786767', 75, 0, 1, 0, 0, 10030, '2024-12-23 17:24:25', 10030, '2024-12-23 17:24:25', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10038, '370000山东省', '{bcrypt}$2a$10$IIGL5nUiHd6Tw8H1C5/jXufsomW0qVMmBsxGvgz7r5lPl0oS37nw.', '刘新港', NULL, 0, NULL, '18765435103', 69, 0, 1, 0, 0, 10000, '2024-12-23 17:24:25', 10031, '2025-4-23 9:26:9', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10039, '370700潍坊市', '{bcrypt}$2a$10$pR6wlYj5ymZmgL/1O12mB.C08EbEzm8FFnb63ZeqzAPwlMCMRBYb2', '刘惠娟', NULL, 1, NULL, '18953628957', 76, 0, 1, 0, 0, 10000, '2025-1-9 8:32:47', 10031, '2025-4-23 9:26:2', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10040, 'CNGCBSXY', '{bcrypt}$2a$10$CrstVoEPJXMlnMkfLcef4ORR8sgSnNMjvlZxOpd4OR4BsJ7UDaBWu', '张伟', NULL, 0, NULL, '19985315113', 77, 0, 1, 0, 0, 10000, '2024-6-22 2:3:40', 10000, '2025-2-11 12:5:50', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10041, 'CNGCBSXY', '{bcrypt}$2a$10$qvm4wSDjK18BL1f8SvytoOOjjgGpz47rlZamDaEqKdXkSSYWc3Szi', '张伟', NULL, 0, NULL, '19985315113', 77, 0, 1, 0, 1, 10000, '2024-6-22 2:3:40', 10000, '2025-2-11 12:6:1', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10042, '500100璧山区', '{bcrypt}$2a$10$3owiINzCBOC6o3p99Dq4xOyHSwpWSw9hg0/XUTZ5.fkz6AgeEwnim', '杨波', NULL, 0, NULL, '15310979888', 43, 0, 1, 0, 0, 10031, '2025-2-15 14:38:19', 10031, '2025-4-23 9:25:46', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10043, '370303张店区', '{bcrypt}$2a$10$y4U/YBvvvFnljzQ01bdFuuKByh1yVT52EAOURKjsgQ6wGzImD1PC.', '薛建芹', NULL, 1, NULL, '15065229998', 20, 0, 1, 0, 0, 10031, '2025-3-3 10:50:2', 10031, '2025-4-23 9:25:34', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10044, '371600滨州市', '{bcrypt}$2a$10$iWIMwWYeLxvPTMiX4P41/OS4y8moI2TBGr9RtNZGSkdkyNdVYEiUe', '王宁', NULL, 0, NULL, '18754367878', 70, 0, 1, 0, 0, 10031, '2025-4-15 9:1:35', 10031, '2025-4-23 9:23:35', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gcb3`.`sys_user` VALUES (10045, '520201六盘水钟山区', '{bcrypt}$2a$10$QwIcbHhKiS4kZzJlkrD4yOF539RM4OshE79/xX5eZ8/.m3VZ0fBzy', '马昭志', NULL, 0, NULL, '155978397831', 48, 0, 1, 0, 0, 10031, '2025-4-22 14:9:1', 10031, '2025-5-6 9:57:50', NULL, NULL, NULL, NULL, NULL, NULL);
